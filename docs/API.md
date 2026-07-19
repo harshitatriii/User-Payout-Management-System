@@ -8,14 +8,14 @@ by opening the URLs in a browser.
 
 **`POST /api/creators/`** – create a creator
 ```json
-{ "username": "john_doe", "name": "John Doe" }
+{ "username": "harshitatriii", "name": "Harshit Atri" }
 ```
 
 **`GET /api/creators/{id}/`** – get a creator
 
 **`GET /api/creators/{id}/balance/`** – balance (cached + recalculated from the ledger)
 ```json
-{ "creator": "john_doe", "cached_balance": "80.00", "ledger_balance": "80.00" }
+{ "creator": "Harshit Atri", "cached_balance": "80.00", "ledger_balance": "80.00" }
 ```
 
 **`GET /api/creators/{id}/ledger/`** – all transactions for the creator
@@ -23,7 +23,7 @@ by opening the URLs in a browser.
 **`GET /api/creators/{id}/payout-summary/`** – a summary that matches the assignment
 ```json
 {
-  "creator": "john_doe",
+  "creator": "Harshit Atri",
   "advance_paid_total": "12.00",
   "final_settlement_total": "68.00",
   "withdrawn_total": "0.00",
@@ -84,7 +84,7 @@ was already made in the last 24 hours.
 ## Full example (the assignment's ₹68 case)
 
 ```
-POST /api/creators/            {"username": "john_doe"}
+POST /api/creators/            {"username": "harshitatriii"}
 POST /api/brands/              {"name": "brand_1"}
 POST /api/sales/               {"creator": 1, "brand": 1, "earning": "40.00"}   (x3)
 POST /api/advance-payout/run/  {}                       -> advance total = 12.00
