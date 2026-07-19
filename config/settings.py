@@ -122,3 +122,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django REST Framework
+# The custom exception handler maps domain errors (rate limit, insufficient balance,
+# already reconciled, etc.) to clean HTTP status codes instead of a 500.
+REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "payouts.exceptions.drf_exception_handler",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 50,
+}
