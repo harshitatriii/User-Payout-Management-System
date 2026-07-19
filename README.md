@@ -56,6 +56,13 @@ current_balance        = 80.00      (advance 12 + final 68)
 
 ## How I designed it (short version)
 
+I kept the code in layers: the API views are thin and just call into a **service layer**
+where all the business logic sits (`AdvancePayoutService`, `ReconciliationService`,
+`WithdrawalService`, `PayoutRecoveryService`), and the Django models handle the data. So
+the overall approach is a layered architecture with a service layer, plus a **ledger** for
+the money side (explained below). I didn't use something like a Singleton because there's
+no single shared resource that needs it — that would just be over-engineering here.
+
 The main idea: I don't keep just one balance number and add/subtract from it directly.
 Instead, every money movement is saved as a row in a **ledger** table
 (`PayoutTransaction`) — advance, final payout, clawback, withdrawal, recovery. The
